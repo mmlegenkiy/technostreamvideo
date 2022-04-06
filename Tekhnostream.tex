@@ -1,0 +1,101 @@
+%\Xi 
+\documentclass[t]{beamer}  % [t], [c], или [b] --- вертикальное выравнивание на слайдах (верх, центр, низ)
+%\documentclass[handout]{beamer} % Раздаточный материал (на слайдах всё сразу)
+%\documentclass[aspectratio=169]{beamer} % Соотношение сторон
+
+%\usetheme{Berkeley} % Тема оформления
+%\usetheme{Bergen}
+%\usetheme{Szeged}
+
+%\usecolortheme{beaver} % Цветовая схема
+%\useinnertheme{circles}
+%\useinnertheme{rectangles}
+
+%\usetheme{HSE}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,ukrainian]{babel}	% локализация и переносы
+
+\usepackage{hyperref}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{images2/}}  % папки с картинками
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Другие пакеты
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+\usepackage{soul} % Модификаторы начертания
+\usepackage{csquotes} % Еще инструменты для ссылок
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+\usepackage{multicol} % Несколько колонок
+
+%%% Картинки
+\usepackage{tikz} % Работа с графикой
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+\title{LINUX Технострім}
+%\subtitle{За матеріалами "Системне адміністрування Linux" Сергія Клочкова}
+\author{Легенький М.М.}
+\date{\today}
+\institute[факультет радіофізики, біомедичної електроніки та комп'ютерних систем]{Харківський національний університет імені В. Н. Каразіна}
+
+\begin{document}
+
+\frame[plain]{\titlepage}	% Титульный слайд
+
+\section{Робота з командним рядком}
+\subsection{Вступ}
+ 
+\begin{frame}
+	\frametitle{\insertsection} 
+	\framesubtitle{\insertsubsection}
+Дистрибутиви Linux.
+
+Способи поширення ПЗ: у вигляді вихідних кодів (Gentoo) або у бінарному вигляді (Ubuntu). Політика оновлення ПЗ: стабільність (RHEL) або актуальність (Archlinux).		 
+
+Єдине дерево директорій.
+\begin{itemize}
+\item /etc - конфігурація.
+\item /home - дані користувачів.
+\item /usr - додатки.
+\item /var - дані та логи.
+\item /tmp - тимчасові файли.
+\end{itemize}
+\end{frame}
+
+\subsection{Основи роботи в системі Linux}
+ 
+\begin{frame}
+	\frametitle{\insertsection} 
+	\framesubtitle{\insertsubsection}
+Порядок завантаження персонального комп'ютера системи IBM PC:
+\begin{itemize}
+\item Ініціалізація та перевірка працезданості обладнання (POST).
+\item Передача керування завантажувачу з якогось локального пристрою  або мережею.
+\item Для завантаження з локального диску необхідно, щоб на цьому диску була таблиця розділів, що підтримується BIOS, та був завантажувач.
+\item Основні види таблиць розділів MBR (sudo dd if=/dev/sda bs=512 count=1 $|$ file -) та GPT (використовується службовий розділ розміром 2 Мб, де знаходиться завантажувач). 
+\item Завантажувач з MBR (stage1) запускає інший більш фунціональний завантажувач (stage2). 
+\item Далі завантажувачу треба запустити ядро операційної системи (при цьому може демонструватись меню).
+\item initrd використовується щоб безпосередньо розпочати роботу з обладнаннням.
+\item Далі запускається init щоб запустити всі процеси та примонтувати всі файлові систем окрім кореневої.
+\end{itemize}
+
+\end{frame}
+
+\end{document}
