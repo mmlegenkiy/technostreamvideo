@@ -1,3 +1,6 @@
+*.fdb_latexmk
+*.fls
+*.tex~
 *.aux
 *.log
 *.nav
