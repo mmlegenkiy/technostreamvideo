@@ -96,4 +96,31 @@ dd if=/dev/zero of=./testfile bs=4k - процеси в статусі D - бл�
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+	\frametitle{\insertsection} 
+	\framesubtitle{\insertsubsection}
+host google.com 127.0.0.1
+
+sudo tcpdump -vvni wlp2s0 port 53
+
+sudo netstat -nltp | grep named
+
+add to file /etc/bind/named.conf.options
+        allow-recursion { none; };
+        allow-query { any; };
+
+service bind9 restart
+
+dig google.com @127.0.0.1
+
+Ключові моменти конфігурації HTTP-серверу:
+\begin{itemize}
+  \item Контексти конфігурації;
+  \item Віртуальні сервери;
+  \item Спадок та перевизначення;
+  \item listen - що слухати;
+  \item document root - де лежить те, що віддавати;
+  \item два різних сервери не можуть слухати на одній nape ip:port.
+\end{itemize}
+\end{frame}
 \end{document}
